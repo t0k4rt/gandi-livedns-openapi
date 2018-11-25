@@ -1061,7 +1061,7 @@ paths:
     put:
       tags:
         - Domains
-      summary: Change all records for a domain
+      summary: Change all records for a domain, a record name and a record type
       description: Optional extended description in Markdown.
       consumes:
         - application/json
@@ -1089,11 +1089,7 @@ paths:
           description: Record to add
           schema:
             type: object
-            properties:
-              items:
-                type: array
-                items:
-                  $ref: '#/definitions/Record'
+            $ref: '#/definitions/Record'
       responses:
         '201':
           description: OK
