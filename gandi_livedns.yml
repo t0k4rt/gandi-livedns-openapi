@@ -1057,6 +1057,58 @@ paths:
           schema:
             $ref: '#/definitions/Return40x'
 
+
+    put:
+      tags:
+        - Domains
+      summary: Change all records for a domain
+      description: Optional extended description in Markdown.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: domain
+          type: string
+          required: true
+          description: Domain to inspect
+        - in: path
+          name: record_name
+          type: string
+          required: true
+          description: Domain to inspect
+        - in: path
+          name: record_type
+          type: string
+          required: true
+          description: record type to inspect
+        - in: body
+          name: record
+          required: true
+          description: Record to add
+          schema:
+            type: object
+            properties:
+              items:
+                type: array
+                items:
+                  $ref: '#/definitions/Record'
+      responses:
+        '201':
+          description: OK
+          schema:
+            $ref: '#/definitions/Return200'
+        '400':
+          description: Not OK
+          schema:
+            $ref: '#/definitions/Return400'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Return40x'
+
+
 definitions:
   Zone:
     type: object
